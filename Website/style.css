@@ -29,6 +29,11 @@
     color: rgb(0, 0, 0);
   }
 
+  #signup {
+    position: relative;
+    float: right;
+  }
+
   #login {
     position: relative;
     float: right;
@@ -53,6 +58,8 @@
     background: #6084ad;
     mix-blend-mode: overlay;
 }
+
+
 
 
 
