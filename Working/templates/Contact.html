@@ -9,14 +9,33 @@
   <form action="/run" class="account"><a><button class="redirect" >Sign Up</button></a></form>
 </div>
 <body>
-<img src={{ url_for('static', filename="baljeet.jpg")}} id="baljeet">
-<h1 class="name_left">Ishan</h1>
-<p class="email">ishan.ib.bansal@gmail.com</p>
-<img src={{ url_for('static', filename="stacy.jpg")}} id="stacy">
-<h1 id="chantal">Chantal</h1>
-<p class="email">chantalrain.pino@gmail.com</p>
-<img src={{ url_for('static', filename="isabella.jpg")}} id="isabella">
+  <div class="row">
+    <div class="column">
+        <div class="card">
+          <img src={{ url_for('static', filename="baljeet.jpg")}} id="baljeet">
+          <h1 class="name_left">Ishan</h1>
+          <p class="email">ishan.ib.bansal@gmail.com</p>
+        </div>
+    </div>
+    <div class="column">
+        <div class="card">
+          <img src={{ url_for('static', filename="stacy.jpg")}} id="stacy">
+          <h1 id="chantal">Chantal</h1>
+          <p class="email">chantalrain.pino@gmail.com</p>
+        </div>
+    </div>
+    <div class="column">
+        <div class="card">
+          <img src={{ url_for('static', filename="isabella.jpg")}} id="isabella">
+          <h1 id="michelle">Michelle</h1>
+          <p class="email">itsmichelle.j.y@gmail.com</p>
+        </div>
+    </div>
+    <div class="column">
+        <div class="card">
+
+        </div>
+    </div>
+  </div>
 </body>
-<h4 id="michelle">Michelle</h1>
-<p class="email">chantalrain.pino@gmail.com</p>
 
