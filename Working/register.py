@@ -86,8 +86,16 @@ def back():
 
 @app.route('/leaderboard', methods=['POST', 'GET'])
 def leaderboard():
-    result = db.leaderboard(conn)
-    return render_template('Leaderboard.html', context=result)
+    results = db.leaderboard(conn)
+
+    jresult = {'username':'count'}
+    for result in results:
+      jresult[result[0]] = result[1]
+
+    return jresult
+
+    # return render_template('Leaderboard.html', context=result)
+
 
 
 
