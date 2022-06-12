@@ -51,11 +51,11 @@ def validate_login(conn, email, password):
         conn.commit()
         print(result)
 
-def insertCounter(conn, username):
+def insertCounter(conn, password, counter):
      with conn.cursor() as cur:
         
         cur.execute(
-            f"UPDATE user_info SET counter = counter + 1 WHERE username='{username}'"
+            f"UPDATE user_info SET counter = counter + {counter} WHERE password='{password}'"
         )
         
         conn.commit()
@@ -64,6 +64,6 @@ def insertCounter(conn, username):
 
 
 
-# insert_user(conn, email='hi@gmail.com', password='pass', username='chalory')
+#insert_user(conn, email='hi@gmail.com', password='pass', username='chalory')
 # validate_login(conn, email='hi@gmail.com', password='pass')
-# insertCounter(conn, username='chalory')
+#insertCounter(conn, password='mario123', counter=3)

@@ -28,16 +28,24 @@ def contact():
 @app.route("/Sign-in", methods=["POST", "GET"])
 def signin():
     if request.method == 'POST':
-        t_username = request.form.get("t_Username", "")
+       
         t_email = request.form.get("t_Email", "")
         t_password = request.form.get("t_Password", "")
         db.validate_login(conn, email=t_email, password=t_password)
-        session['username'] = t_username
-        return redirect(url_for("counter_init"))
+        session['password'] = t_password
+        return redirect(url_for("count_up"))
     return render_template("sign-in.html")
 
         
-   
+@app.route('/count', methods=['GET', 'POST'])
+def count_up():
+    if "password" in session:
+        password_result = session['password']
+        db.insertCounter(conn, password=password_result, counter=2)
+        print(password_result)
+        return render_template("Recycle_Counter.html")
+    else:
+        return redirect(url_for("signin"))
 
 
 @app.route("/run")
@@ -76,15 +84,7 @@ def counter_init():
     else:
         return redirect(url_for("signin"))
 
-@app.route('/count', methods=['GET', 'POST'])
-def count_up():
-    if "username" in session:
-        username = session['username']
-        db.insertCounter(conn, username=username)
-        print(username)
-        return redirect(url_for("website"))
-    else:
-        return redirect(url_for("signin"))
+
 
 
     
