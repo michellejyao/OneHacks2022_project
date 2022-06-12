@@ -1,7 +1,11 @@
-<form name="frmInfo" action="/count" method="post">
-    <input type="submit" id="btn_submit" value="Yes"/>
-</form>
+<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='style.css')}}"/> 
+<div class="recycle">
+    <h1>Have you recycled today?</h1>
+    <form id = "yes" name="frmInfo" action="/count" method="post">
+        <input type="submit" id="btn_submit" value="Yes"/>
+    </form>
 
-<form name="frmInfo" action="/no" method="post">
-    <input type="submit" id="btn_submit" value="No"/>
-</form>
+    <form id = "no" name="frmInfo" action="/no" method="post">
+        <input type="submit" id="btn_submit" value="No"/>
+    </form>
+</div>

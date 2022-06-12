@@ -294,3 +294,55 @@ body {
   margin-left: 0%;
   float:top;
 }
+
+#noor {
+  position: relative;
+  z-index: 1000;
+  font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+  margin-left: 12%;
+  margin-top: 2%;
+  font-size: 50px;
+  color: #7f7dce;
+  text-decoration: underline;
+  font-style: italic;
+}
+
+#perry {
+  position: relative;
+  width: 300px;
+  height: auto;
+  border-radius: 50%;
+  margin-left: 0%;
+  float:top;
+}
+
+.recycle {
+  position: relative;
+  z-index: 1000;
+  font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+  display: flex;
+  vertical-align: middle;
+  justify-content: space-between;
+  margin-left: 30%;
+  margin-top: 0%;
+  font-size: 25px;
+  color: #7f7dce;
+}
+
+#yes {
+  position: absolute;
+  margin-left: 5%;
+  margin-top: 30%;
+  font-size: 40px;
+  border-radius: 15px 15px 15px 15px;
+  border: none;
+}
+
+#no {
+  position: absolute;
+  margin-left: 30%;
+  margin-top: 30%;
+  font-size: 40px;
+  border-radius: 15px 15px 15px 15px;
+  border: none;
+}
