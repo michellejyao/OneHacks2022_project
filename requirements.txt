@@ -14,11 +14,6 @@ numpy==1.22.1
 pandas==1.4.0
 psycopg2==2.9.3
 PyExecJS==1.5.1
-PyQt5==5.15.4
-pyqt5-plugins==5.15.4.2.2
-PyQt5-Qt5==5.15.2
-PyQt5-sip==12.9.0
-pyqt5-tools==5.15.4.3.2
 PyReact==0.6.0
 python-dateutil==2.8.2
 python-dotenv==0.19.2
