@@ -1,0 +1,131 @@
+<html>
+  <head>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <title>Registration</title>
+    <meta
+     name="description"
+     content="Register here to play the greatest game ever seen!"
+   />
+    <meta name="keywords" content="register, play, game" />
+    <script language="JavaScript" type="text/javascript">
+
+     function checkform (form)
+     {
+
+         function isEmpty (fixwhat, s_called)
+         {
+             if (fixwhat=="")
+             {
+             alert("Please enter " + s_called);
+             return true;
+             } else {
+             return false;
+             }
+         }
+
+         function charCheck(fixwhat)
+         {
+             var validchars = '@-_.0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+             if(isValid(fixwhat,validchars))
+             {
+                 return true;
+             } else {
+                 alert("Please use only letters or numbers in this field");
+                 return false;
+             }
+         }
+
+         function isValid(string,validchars)
+         {
+             for (var i=0; i< string.length; i++)
+             {
+             if (validchars.indexOf(string.charAt(i)) === -1) {return false;}
+             }
+             return true;
+         }
+
+         //check for empty fields
+         if (is_empty (form.t_email.value,"your email address")) { form.t_email.focus();  return false;}
+         if (is_empty (form.t_password.value,"your password")) { form.t_password.focus();  return false;}
+
+         //check for weird chars
+         if (charCheck(form.t_email.value)===false) {form.t_email.focus(); return false;}
+         if (charCheck(form.t_password.value)===false) {form.t_password.focus(); return false;}
+
+         return true ;
+     }
+     //-->
+    </script>
+
+    <style type="text/css">
+      html,
+      body {
+        padding: 1;
+        margin: 1;
+      }
+
+      input {
+        font-size: 16px;
+        font-family: Helvetica, sans-serif;
+      }
+
+      body {
+        background-color: #66aacc;
+        font-family: sans-serif, arial, helvetica;
+        padding-bottom: 50px;
+      }
+
+      .container {
+        background-color: #ffffff;
+        max-width: 600px;
+        margin: 20px auto 0 auto;
+        padding: 15px 20px 1px 20px;
+      }
+
+      .form-row {
+        padding: 10px 0;
+        display: flex;
+      }
+
+      .form-row label {
+        padding-right: 10px;
+      }
+
+      .form-row input {
+        padding-right: 10px;
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Sign Up</h1>
+
+    <div class="container">
+      <form
+       name="frmInfo"
+       action="/register"
+       method="post"
+       onsubmit="return checkform(this);"
+     >
+        <div class="form-row">
+          <label for="Email">Email address:</label>
+          <input type="text" id="t_Email" name="t_Email" />
+        </div>
+
+        <div class="form-row">
+          <label for="Email">Password:</label>
+          <input type="text" id="t_Password" name="t_Password" />
+        </div>
+
+
+        <div class="form-row">
+          <input type="submit" id="btn_submit" value="Register" />
+        </div>
+
+
+      </form>
+
+    </div>
+
+  </body>
+</html>
