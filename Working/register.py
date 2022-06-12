@@ -21,9 +21,14 @@ def about():
 def contact():
     return render_template("Contact.html")
 
-@app.route("/Sign-in")
+@app.route("/Sign-in", methods=["POST", "GET"])
 def signin():
+    t_username = request.form.get("t_Username", "")
+    t_email = request.form.get("t_Email", "")
+    t_password = request.form.get("t_Password", "")
+    db.validate_login(conn, email=t_email, password=t_password)
     return render_template("sign-in.html")
+
 
 @app.route("/run")
 
