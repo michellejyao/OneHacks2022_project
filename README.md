@@ -12,7 +12,7 @@ Our website is meant to educate anyone on where to throw stuff out I.E. TRASH, R
 ``` ccloud quickstart```
 
 
-For more information, visit this: https://www.cockroachlabs.com/docs/cockroachcloud/quickstart?filters=ccloud&filters=linux&filters=python
+For more information about how to setup your db cluster on cockroachdb, visit this: https://www.cockroachlabs.com/docs/cockroachcloud/quickstart?filters=ccloud&filters=linux&filters=python
 
 **SQLite3 must be installed**
  ```pip install psycopg2-binary```
