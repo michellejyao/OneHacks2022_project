@@ -60,10 +60,20 @@ def insertCounter(conn, password, counter):
         
         conn.commit()
         
+def leaderboard(conn):
+    with conn.cursor() as cur:
+
+        cur.execute(
+            f"SELECT username, counter FROM user_info"
+        )
+
+        result = cur.fetchall()
+        conn.commit()
+        print(result)
     
 
 
 
-#insert_user(conn, email='hi@gmail.com', password='pass', username='chalory')
+# insert_user(conn, email='hi@gmail.com', password='pass', username='chalory')
 # validate_login(conn, email='hi@gmail.com', password='pass')
-#insertCounter(conn, password='mario123', counter=3)
+# insertCounter(conn, password='mario123', counter=3)

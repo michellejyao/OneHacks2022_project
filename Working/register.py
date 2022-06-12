@@ -33,7 +33,7 @@ def signin():
         t_password = request.form.get("t_Password", "")
         db.validate_login(conn, email=t_email, password=t_password)
         session['password'] = t_password
-        return redirect(url_for("count_up"))
+        return redirect(url_for("counter_init"))
     return render_template("sign-in.html")
 
         
@@ -43,7 +43,7 @@ def count_up():
         password_result = session['password']
         db.insertCounter(conn, password=password_result, counter=2)
         print(password_result)
-        return render_template("Recycle_Counter.html")
+        return redirect(url_for("website"))
     else:
         return redirect(url_for("signin"))
 
@@ -78,11 +78,16 @@ def register():
 
 @app.route('/counter', methods = ['GET', 'POST'])
 def counter_init():
-    if "username" in session:
-        username = session['username']
-        return render_template("Recycle_Counter.html")
-    else:
-        return redirect(url_for("signin"))
+    return render_template("Recycle_Counter.html")
+
+@app.route('/no')
+def back():
+    return redirect(url_for('website'))
+
+@app.route('/leaderboard', methods=['POST', 'GET'])
+def leaderboard():
+    result = db.leaderboard(conn)
+    return render_template('Leaderboard.html', context=result)
 
 
 
