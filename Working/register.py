@@ -1,4 +1,5 @@
 import logging
+from typing import Counter
 from flask import Flask
 from flask import render_template # to render our html page
 from flask import request # to get user input from form
@@ -72,6 +73,16 @@ def counter_init():
     if "username" in session:
         username = session['username']
         return render_template("Recycle_Counter.html")
+    else:
+        return redirect(url_for("signin"))
+
+@app.route('/count', methods=['GET', 'POST'])
+def count_up():
+    if "username" in session:
+        username = session['username']
+        db.insertCounter(conn, username=username)
+        print(username)
+        return redirect(url_for("website"))
     else:
         return redirect(url_for("signin"))
 
