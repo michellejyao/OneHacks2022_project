@@ -9,6 +9,7 @@ import psycopg2 # for database connection
 import db
 
 app = Flask(__name__)
+app.secret_key = "27eduCBA09"
 conn = psycopg2.connect("postgresql://chantal:onehacks2022@free-tier6.gcp-asia-southeast1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&options=--cluster%3Donehacks-backend-2776")
 
 @app.route("/")
@@ -25,11 +26,17 @@ def contact():
 
 @app.route("/Sign-in", methods=["POST", "GET"])
 def signin():
-    t_username = request.form.get("t_Username", "")
-    t_email = request.form.get("t_Email", "")
-    t_password = request.form.get("t_Password", "")
-    db.validate_login(conn, email=t_email, password=t_password)
+    if request.method == 'POST':
+        t_username = request.form.get("t_Username", "")
+        t_email = request.form.get("t_Email", "")
+        t_password = request.form.get("t_Password", "")
+        db.validate_login(conn, email=t_email, password=t_password)
+        session['username'] = t_username
+        return redirect(url_for("counter_init"))
     return render_template("sign-in.html")
+
+        
+   
 
 
 @app.route("/run")
@@ -56,20 +63,24 @@ def register():
         return render_template("register.html")
 
     # hash the password they entered
-    db.insert_activity(conn, email=t_email, password=t_password, username=t_username)
+    db.insert_user(conn, email=t_email, password=t_password, username=t_username)
     t_message = "Your user account has been added."
     return render_template("register.html")
 
-@app.route('/login', methods = ['GET', 'POST'])
+@app.route('/counter', methods = ['GET', 'POST'])
 def counter_init():
-    
-    if request.method == 'POST':
-      t_counter = request.form.get("counter", "")
-      session['username'] = request.form['username']
-      session_user =  session['username']
-      db.insertCounter(conn, username=session_user, counter=t_counter)
+    if "username" in session:
+        username = session['username']
+        return render_template("Recycle_Counter.html")
+    else:
+        return redirect(url_for("signin"))
 
-      return redirect(url_for('index'))
+
+    
+    
+#db.insertCounter(conn, username=session_user, counter=t_counter)
+
+     
   
 # this is for command line testing
 if __name__ == "__main__":

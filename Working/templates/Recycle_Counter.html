@@ -1,18 +1,7 @@
-<div id="wrapper">
-    <label for="yes_no_radio">Have you recycled today??</label>
-    <p>
-    <input type="radio" name="Yes" checked>Yes</input>
-    </p>
-    <p>
-    <input type="radio" name="no">No</input>
-    </p>
-</div>
+<form name="frmInfo" action="/login" method="post">
+    <input type="submit" id="btn_submit" value="Yes"/>
+</form>
 
-<script>
-    var recycle_counter = 0;
-    if(document.getElementById('yes').checked) {
-        recycle_counter++;
-    }else if(document.getElementById('no').checked) {
-        recycle_counter--;
-}
-</script>
+<form name="frmInfo" action="/" method="post">
+    <input type="submit" id="btn_submit" value="No"/>
+</form>
