@@ -35,6 +35,7 @@ def showForm():
 @app.route("/register", methods=["POST","GET"])
 def register():
     # get user input from the html form
+    t_username = request.form.get("t_Username", "")
     t_email = request.form.get("t_Email", "")
     t_password = request.form.get("t_Password", "")
 
@@ -48,7 +49,7 @@ def register():
         return render_template("register.html")
 
     # hash the password they entered
-    db.insert_activity(conn, email=t_email, password=t_password)
+    db.insert_activity(conn, email=t_email, password=t_password, username=t_username)
     t_message = "Your user account has been added."
     return render_template("register.html")
 
