@@ -10,6 +10,8 @@ Our website is meant to educate anyone on where to throw stuff out I.E. TRASH, R
 **CockroachDB must be installed**
 
 ``` ccloud quickstart```
+
+
 For more information, visit this: https://www.cockroachlabs.com/docs/cockroachcloud/quickstart?filters=ccloud&filters=linux&filters=python
 
 **SQLite3 must be installed**
