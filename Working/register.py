@@ -88,13 +88,14 @@ def back():
 def leaderboard():
     results = db.leaderboard(conn)
 
-    jresult = {'username':'count'}
+    usernames = []
     for result in results:
-      jresult[result[0]] = result[1]
+      usernames.append(result[0])
+    counts = []
+    for result in results:
+        counts.append(result[1])
 
-    return jresult
-
-    # return render_template('Leaderboard.html', context=result)
+    return render_template('Leaderboard.html', usernames=usernames, counts=counts)
 
 
 

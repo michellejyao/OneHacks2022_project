@@ -1,0 +1,6 @@
+{% set i = namespace(value=0) %}
+<h1>Username: Count</h1>
+{% for username in usernames %}
+    <p>{{username}}: {{counts[i.value]}}</p>
+    {% set i.value = i.value + 1 %}
+{% endfor %}
