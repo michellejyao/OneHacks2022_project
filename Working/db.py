@@ -20,7 +20,7 @@ conn = psycopg2.connect("postgresql://chantal:onehacks2022@free-tier6.gcp-asia-s
 def info(conn):
     with conn.cursor() as cur:
         cur.execute(
-             "CREATE TABLE IF NOT EXISTS user_info (email varchar(319), password VARCHAR)")
+             "CREATE TABLE IF NOT EXISTS user_info (email VARCHAR(319), password VARCHAR(50), username VARCHAR(50))")
       
         logging.debug("create_accounts(): status message: %s",
                       cur.statusmessage)
@@ -31,14 +31,26 @@ def info(conn):
 
 info(conn)
 
-def insert_activity(conn, email, password):
+def insert_activity(conn, email, password, username):
     with conn.cursor() as cur:
         cur.execute(
-            f"UPSERT INTO user_info (email, password) VALUES ('{email}', '{password}')"
+            f"UPSERT INTO user_info (email , password, username) VALUES ('{email}', '{password}', '{username}')"
         )
         logging.debug("init_db(): status message: %s",
                       cur.statusmessage)
     conn.commit()
 
+def validate_login(conn, email, password):
+   
+    with conn.cursor() as cur:
+        
+        cur.execute(
+            f"SELECT username FROM user_info WHERE email='{email}' AND password='{password}'"
+        )
+        result = cur.fetchone()
+        conn.commit()
+        print(result)
 
-# insert_activity(conn, email='hi', password='pass')
+
+insert_activity(conn, email='hi@gmail.com', password='pass', username='chalory')
+validate_login(conn, email='hi@gmail.com', password='pass')
