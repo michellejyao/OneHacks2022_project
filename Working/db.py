@@ -20,7 +20,7 @@ conn = psycopg2.connect("postgresql://chantal:onehacks2022@free-tier6.gcp-asia-s
 def info(conn):
     with conn.cursor() as cur:
         cur.execute(
-             "CREATE TABLE IF NOT EXISTS user_info (email VARCHAR(319), password VARCHAR(50), username VARCHAR(50))")
+             "CREATE TABLE IF NOT EXISTS user_info (email VARCHAR(319), password VARCHAR(50), username VARCHAR(50), counter INT DEFAULT 0)")
       
         logging.debug("create_accounts(): status message: %s",
                       cur.statusmessage)
@@ -31,7 +31,7 @@ def info(conn):
 
 info(conn)
 
-def insert_activity(conn, email, password, username):
+def insert_user(conn, email, password, username):
     with conn.cursor() as cur:
         cur.execute(
             f"UPSERT INTO user_info (email , password, username) VALUES ('{email}', '{password}', '{username}')"
@@ -51,6 +51,19 @@ def validate_login(conn, email, password):
         conn.commit()
         print(result)
 
+def insertCounter(conn, username, counter):
+     with conn.cursor() as cur:
+        
+        cur.execute(
+            f"UPDATE user_info SET counter = counter + {counter} WHERE username='{username}'"
+        )
+        
+        conn.commit()
+        
+    
 
-insert_activity(conn, email='hi@gmail.com', password='pass', username='chalory')
+
+
+insert_user(conn, email='hi@gmail.com', password='pass', username='chalory')
 validate_login(conn, email='hi@gmail.com', password='pass')
+insertCounter(conn, username='chalory', counter=1)

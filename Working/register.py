@@ -2,6 +2,8 @@ import logging
 from flask import Flask
 from flask import render_template # to render our html page
 from flask import request # to get user input from form
+from flask import Flask, session, redirect, url_for, escape, request
+
 import hashlib # included in Python library, no need to install
 import psycopg2 # for database connection
 import db
@@ -58,6 +60,17 @@ def register():
     t_message = "Your user account has been added."
     return render_template("register.html")
 
+@app.route('/login', methods = ['GET', 'POST'])
+def counter_init():
+    
+    if request.method == 'POST':
+      t_counter = request.form.get("counter", "")
+      session['username'] = request.form['username']
+      session_user =  session['username']
+      db.insertCounter(conn, username=session_user, counter=t_counter)
+
+      return redirect(url_for('index'))
+  
 # this is for command line testing
 if __name__ == "__main__":
     app.run(debug=True)
