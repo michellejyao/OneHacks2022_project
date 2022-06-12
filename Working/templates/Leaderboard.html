@@ -1,6 +1,18 @@
+<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='style.css')}}"/> 
+<title>Leaderboard</title>
+<div class="topnav">
+    <form action="/"><a><button class="redirect" id="Home">Eco Future</button></a></form>
+    <form action="/about"><a><button class="redirect" >About</button></a></form>
+    <form action="/Contact"><a><button class="redirect" >Contact</button></a></form>
+    <form action="/leaderboard"><a><button class="redirect" >Leaderboard</button></a></form>
+    <form action="/Sign-in" class="account"><a><button class="redirect" >Login</button></a></form>
+    <form action="/run" class="account"><a><button class="redirect" >Sign Up</button></a></form>
+</div>
+<body>
 {% set i = namespace(value=0) %}
-<h1>Username: Count</h1>
+<h3 class="lead">Leaderboard</h3>
 {% for username in usernames %}
-    <p>{{username}}: {{counts[i.value]}}</p>
+    <h2>{{username}}: {{counts[i.value]}}</h2>
     {% set i.value = i.value + 1 %}
 {% endfor %}
+</body>

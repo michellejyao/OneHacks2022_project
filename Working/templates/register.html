@@ -1,4 +1,14 @@
 <html>
+  <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='style.css')}}"/> 
+  <head>
+      <div class="topnav">
+          <form action="/"><a><button class="redirect" id="Home">Eco Future</button></a></form>
+          <form action="/about"><a><button class="redirect" >About</button></a></form>
+          <form action="/Contact"><a><button class="redirect" >Contact</button></a></form>
+          <form action="/leaderboard"><a><button class="redirect" >Leaderboard</button></a></form>
+          <form action="/Sign-in" class="account"><a><button class="redirect" >Login</button></a></form>
+          <form action="/run" class="account"><a><button class="redirect" >Sign Up</button></a></form>
+      </div>
   <head>
     <link rel="shortcut icon" href="favicon.ico" />
     <title>Registration</title>
@@ -57,48 +67,10 @@
      //-->
     </script>
 
-    <style type="text/css">
-      html,
-      body {
-        padding: 1;
-        margin: 1;
-      }
-
-      input {
-        font-size: 16px;
-        font-family: Helvetica, sans-serif;
-      }
-
-      body {
-        background-color: #66aacc;
-        font-family: sans-serif, arial, helvetica;
-        padding-bottom: 50px;
-      }
-
-      .container {
-        background-color: #ffffff;
-        max-width: 600px;
-        margin: 20px auto 0 auto;
-        padding: 15px 20px 1px 20px;
-      }
-
-      .form-row {
-        padding: 10px 0;
-        display: flex;
-      }
-
-      .form-row label {
-        padding-right: 10px;
-      }
-
-      .form-row input {
-        padding-right: 10px;
-        flex: 1;
-      }
-    </style>
+    
   </head>
   <body>
-    <h1>Sign Up</h1>
+    <h3 id="login">Sign Up</h1>
 
     <div class="container">
       <form
