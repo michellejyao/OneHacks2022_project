@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/chantal/projects/OneHacks_project/Working/onehacks2"
+set -gx VIRTUAL_ENV "/home/chantal/projects/OneHacks2022_project/onehacks2"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

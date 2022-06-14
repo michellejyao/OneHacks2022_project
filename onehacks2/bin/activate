@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/chantal/projects/OneHacks_project/Working/onehacks2"
+VIRTUAL_ENV="/home/chantal/projects/OneHacks2022_project/onehacks2"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
